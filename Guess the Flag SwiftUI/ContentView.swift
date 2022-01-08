@@ -9,29 +9,31 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ZStack() {
-            VStack(spacing: 0) {
-                LinearGradient(stops: [
-                    Gradient.Stop(color: .blue, location: 0.2),
-                    Gradient.Stop(color: .yellow, location: 0.7),
-                ], startPoint: .topLeading, endPoint: .bottomLeading)
+        VStack {
+            Button("Delete selection", role: .destructive, action: executeDelete)
+                .buttonStyle(.bordered)
+            Button {
+                print("Button was tapped")
                 
-                RadialGradient(colors: [.black, .purple], center: .center, startRadius: 30, endRadius: 300)
-                
-                AngularGradient(colors: [.red, .blue, .white, .black, .purple, .red], center: .center)
-                
-                LinearGradient(stops: [
-                    Gradient.Stop(color: .red, location: 0.1),
-                    Gradient.Stop(color: .blue, location: 0.7),
-                ], startPoint: .topLeading, endPoint: .bottomLeading)
-                
-            
+            } label: {
+                Text("Tap me")
+                    .padding()
+                    .foregroundColor(.orange)
+                    Image(systemName: "pencil")
+                    .background(.red)
             }
-            Text("Some text")
-                .foregroundStyle(.secondary)
-                .padding(50)
-                .background(.ultraThinMaterial)
-        }.ignoresSafeArea()
+            Button {
+                print("Button was tapped")
+                
+            } label: {
+                Label("Edit", systemImage: "pencil")
+            }
+        }
+        
+    }
+    
+    func executeDelete() {
+        print("delete now")
     }
 }
 
